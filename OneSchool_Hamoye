@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+fao_data= pd.read_csv("FoodBalanceSheets_E_Africa_NOFLAG.csv",encoding='Latin-1')
+fao_data.head()
+
+fao_data.groupby('Item').sum()
+
+fao_data.describe()
+
+fao_data.isnull().sum()
+
+fao_data.corr()
+
+fao_data.groupby('Element').sum()
+
+fao_data.groupby('Element')['Y2018'].sum()
+
+from IPython.display import display
+pd.set_option("display.max_rows",None,"display.max_columns",None)
+
+fao_total= fao_data[['Element','Area','Y2018']]
+fao_total.groupby(['Area','Element']).sum()
+
+fao_data.groupby('Area')['Area'].nunique().sum()
+
+
